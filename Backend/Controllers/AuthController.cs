@@ -505,7 +505,9 @@ namespace RecruitmentBackend.Controllers
             {
                 Subject = new ClaimsIdentity(claims),
                 Expires = DateTime.UtcNow.AddDays(1), 
-                SigningCredentials = creds
+                SigningCredentials = creds,
+                Issuer = _configuration["Jwt:Issuer"],
+                Audience = _configuration["Jwt:Audience"]
             };
 
             var tokenHandler = new JwtSecurityTokenHandler();
